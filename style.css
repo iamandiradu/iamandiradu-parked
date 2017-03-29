@@ -15,7 +15,7 @@ h1, h2, a {
 /*Header*/
 .header {
   height: 50px;
-  background: url('assets/covers/patt.png');
+  background: url('assets/covers/patt.png')no-repeat;
   position: fixed;
   width:100%;
   text-align: left;

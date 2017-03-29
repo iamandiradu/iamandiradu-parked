@@ -1,0 +1,259 @@
+html, body {
+  margin: 0;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+h1, h2, a {
+  font-family: 'Oswald', sans-serif;
+}
+
+.container {
+  width: 940px;
+  margin: 0 auto;
+
+}
+/*Header*/
+.header {
+  height: 50px;
+  background: url('assets/covers/patt.png');
+  position: fixed;
+  width:100%;
+}
+.nav {
+  background:  url('assets/covers/patt.png');
+}
+.nav li {
+  display: inline-block;
+  padding: 10px 35px 10px 35px;
+  margin: 10px;
+  width: 36px;
+  height: 36px;
+}
+.nav li a {
+   height: 2.2em;
+   width: 2.2em;
+   display: inline-block;
+}
+#facebook {
+  background: url('assets/social/facebook.png') no-repeat;
+}
+#facebook:hover {
+  background: url('assets/social/zoomed/facebook34.png') no-repeat;
+}
+#instagram {
+  background: url('assets/social/instagram.png')no-repeat;
+}
+#instagram:hover {
+  background: url('assets/social/zoomed/instagram34.png') no-repeat;
+}
+#youtube {
+  background: url('assets/social/youtube.png')no-repeat;
+}
+#youtube:hover {
+  background: url('assets/social/zoomed/youtube34.png') no-repeat;
+}
+/*#twitter {
+  background: url('assets/social/twitter.png')no-repeat;
+}
+#twitter:hover {
+  background: url('assets/social/zoomed/twitter34.png') no-repeat;
+}*/
+#github {
+  background: url('assets/social/github.png')no-repeat;
+}
+#github:hover {
+  background: url('assets/social/zoomed/github34.png') no-repeat;
+}
+#soft32 {
+  background: url('assets/social/softelA.png')no-repeat;
+}
+#soft32:hover {
+  background: url('assets/social/zoomed/softelA34.png') no-repeat;
+}
+#soundcloud {
+  background: url('assets/social/soundcloud.png')no-repeat;
+}
+#soundcloud:hover {
+  background: url('assets/social/zoomed/soundcloud34.png') no-repeat;
+}
+#steam {
+  background: url('assets/social/steam.png') no-repeat;
+}
+#steam:hover {
+  background: url('assets/social/zoomed/steam34.png') no-repeat;
+}
+
+/* Main */
+
+.main {
+  height: 900px;
+  background: url('assets/covers/longboard.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+.main h1 {
+  font-size: 150px;
+  color: white;
+  text-align: center;
+  padding-top: 400px;
+  text-shadow: -3px 0 #1c1c1c, 0 3px #1c1c1c, 3px 0 #1c1c1c, 0 -3px #1c1c1c;
+}
+
+.main p {
+  font-size: 30px;
+  color: white;
+  text-align: center;
+  padding-top:100px;
+  text-shadow: -1px 0 #1c1c1c, 0 1px #1c1c1c, 1px 0 #1c1c1c, 0 -1px #1c1c1c;
+}
+
+/*Button*/
+.btn {
+  text-align: center;
+  margin-top: 20px;
+}
+.btn a {
+  background-color: #1c1c1c;
+  /*width: auto;
+  height: 48px;*/
+  margin: 0 auto;
+  /*text-align: center;*/
+  font-size: 20px;
+  border-radius: 3px;
+  /*padding:10px 0   10px 0;*/
+  /*padding-top: 10px;*/
+  color: #fff;
+  text-decoration:none;
+
+  display: inline-block;
+
+  padding: 15px 10px;
+}
+.btn a:hover{
+  background-color: white;
+  color:black;
+}
+/* Supporting */
+.supporting {
+  text-align: center;
+  padding: 50px 0 50px;
+  background: url('assets/covers/patt.png');
+}
+
+.supporting .col {
+  float: left;
+  width: 28%;
+  padding: 10px;
+}
+#bike {
+  background-color: white;
+  width: 150px;
+  text-align: center;
+  margin: 50px auto;
+  padding: 30px;
+}
+#bike h1 {
+  color: black;
+}
+#bike #active {
+  display:none;
+}
+#bike #notactive {
+  display: block;
+}
+#bike:hover #active {
+  display: block;
+}
+#bike:hover #notactive {
+  display: none;
+
+}
+.supporting h1,
+.supporting h2 {
+  color: white;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.clearfix {
+  clear: both;
+}
+
+.supporting p {
+  color: #efefef;
+  margin-bottom: 20px;
+  line-height: 20px;
+  font-size: 12px;
+}
+
+.supporting .btn {
+  background-color: #eee;
+  color: #1c1c1c;
+  font-size: 18px;
+  padding: 8px 30px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* Feature */
+.feature {
+  height: 600px;
+  background: url('assets/covers/bike.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+.feature h1 {
+  font-size: 50px;
+  color: white;
+  text-align: center;
+  padding-top: 100px;
+  text-shadow: -3px 0 #1c1c1c, 0 3px #1c1c1c, 3px 0 #1c1c1c, 0 -3px #1c1c1c;
+}
+.feature h2 {
+  color: #fff;
+  font-size: 40px;
+  margin: 0;
+  padding:50px 0 0;
+}
+
+/* Footer */
+.footer {
+  height: 600px;
+}
+
+.footer h1,
+.footer h2 {
+  color: #fff;
+  font-size: 40px;
+  margin: 0 0 20px 0;
+  padding:50px 0 0;
+}
+
+.footer p {
+  color: #fff;
+  margin: 0 0 20px 0;
+  font-size: 18px;
+}
+
+
+@media (min-width:600px) {
+  .main h1 {
+    font-size: 200px;
+  }
+
+  .supporting .col {
+    width: 30%;
+  }
+
+  .supporting h2 {
+    font-size: 40px;
+  }
+
+  .supporting p {
+    font-size: 14px;
+  }
+
+  .feature h2 {
+    font-size: 60px;
+  }
+}

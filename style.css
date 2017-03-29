@@ -22,6 +22,7 @@ h1, h2, a {
 }
 .nav {
   background:  url('assets/covers/patt.png');
+  height: 50px;
 }
 .nav ul {
 

@@ -5,3 +5,4 @@ Analytics
 Mobile-friendly
 Glowing input text
 Youtube
+credits for photos - DIV below pic

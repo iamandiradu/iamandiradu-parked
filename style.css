@@ -92,7 +92,7 @@ h1, h2, a {
 
 .main {
   height: 900px;
-  background: url('assets/covers/longboard.jpg') no-repeat center center;
+  background: url('assets/covers/longboard.jpg') no-repeat center center fixed;
   background-size: cover;
 }
 

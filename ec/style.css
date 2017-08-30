@@ -14,12 +14,13 @@ html, body {
 }
 .header img {
   width: 30%;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 .container {
   color: #fff;
   max-width: 940px;
 }
+
 .btn {
   background-color: rgba(255, 247, 52, 1);
   text-decoration: none;

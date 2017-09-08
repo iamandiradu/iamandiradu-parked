@@ -29,11 +29,16 @@ html, body {
   color: #333;
   text-transform: uppercase;
   transition: all 0.35s;
+  margin-bottom: 15px;
+  outline: 0 !important;
 }
 .btn:hover {
   color:#fff734;
   background-color: rgba(51,51,51,1);
   transition: all 0.35s;
+}
+.btn:focus {
+  outline: 0 !important;
 }
 .footer .container {
   border-top: 1px solid #fff;
@@ -45,9 +50,4 @@ html, body {
   border-radius: 5px;
   margin-top: 10px;
 }
-.col-md-4 a {
-  text-decoration: underline;
-  color:rgba(255,247,51,1);
-  text-align: center;
 
-}

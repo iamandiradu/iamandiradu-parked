@@ -15,13 +15,13 @@ h1, h2, a {
 /*Header*/
 .header {
   height: 50px;
-  background: url('assets/covers/patt.png')no-repeat;
+  background: url('../images/covers/patt.png')no-repeat;
   position: fixed;
   width:100%;
   text-align: left;
 }
 .nav {
-  background:  url('assets/covers/patt.png');
+  background:  url('../images/covers/patt.png');
   height: 50px;
 }
 .nav ul {
@@ -35,64 +35,70 @@ h1, h2, a {
 
 }
 .nav li a {
-   height: 2.2em;
-   width: 2.2em;
+   height: 40px;
+   width: 35px;
    display: inline-block;
 }
 #facebook {
-  background: url('assets/social/facebook.png') no-repeat;
+  background: url('../images/social/facebook.png') no-repeat;
 }
 #facebook:hover {
-  background: url('assets/social/zoomed/facebook34.png') no-repeat;
+  background: url('../images/social/zoomed/facebook34.png') no-repeat;
 }
 #instagram {
-  background: url('assets/social/instagram.png')no-repeat;
+  background: url('../images/social/instagram.png')no-repeat;
 }
 #instagram:hover {
-  background: url('assets/social/zoomed/instagram34.png') no-repeat;
+  background: url('../images/social/zoomed/instagram34.png') no-repeat;
 }
 #youtube {
-  background: url('assets/social/youtube.png')no-repeat;
+  background: url('../images/social/youtube.png')no-repeat;
 }
 #youtube:hover {
-  background: url('assets/social/zoomed/youtube34.png') no-repeat;
+  background: url('../images/social/zoomed/youtube34.png') no-repeat;
 }
-/*#twitter {
-  background: url('assets/social/twitter.png')no-repeat;
+#twitter {
+  background: url('../images/social/twitter.png')no-repeat;
 }
 #twitter:hover {
-  background: url('assets/social/zoomed/twitter34.png') no-repeat;
-}*/
+  background: url('../images/social/zoomed/twitter34.png') no-repeat;
+}
 #github {
-  background: url('assets/social/github.png')no-repeat;
+  background: url('../images/social/github.png')no-repeat;
 }
 #github:hover {
-  background: url('assets/social/zoomed/github34.png') no-repeat;
+  background: url('../images/social/zoomed/github34.png') no-repeat;
 }
 #soft32 {
-  background: url('assets/social/softelA.png')no-repeat;
+  background: url('../images/social/softelA.png')no-repeat;
 }
 #soft32:hover {
-  background: url('assets/social/zoomed/softelA34.png') no-repeat;
+  background: url('../images/social/zoomed/softelA34.png') no-repeat;
 }
 #soundcloud {
-  background: url('assets/social/soundcloud.png')no-repeat;
+  background: url('../images/social/soundcloud.png')no-repeat;
 }
 #soundcloud:hover {
-  background: url('assets/social/zoomed/soundcloud34.png') no-repeat;
+  background: url('../images/social/zoomed/soundcloud34.png') no-repeat;
 }
 #steam {
-  background: url('assets/social/steam.png') no-repeat;
+  background: url('../images/social/steam.png') no-repeat;
 }
 #steam:hover {
-  background: url('assets/social/zoomed/steam34.png') no-repeat;
+  background: url('../images/social/zoomed/steam34.png') no-repeat;
+}
+#beer {
+    background: url('../images/social/beer.png') no-repeat;
+}
+#beer:hover {
+    background: url('../images/social/zoomed/beer34.png') no-repeat;
 }
 
 /* Main */
 
 .main {
   height: 900px;
-  background: url('assets/covers/longboard.jpg') no-repeat center center fixed;
+  background: url('../images/covers/longboard.jpg') no-repeat center center fixed;
   background-size: cover;
 }
 
@@ -142,7 +148,7 @@ h1, h2, a {
 .supporting {
   text-align: center;
   padding: 50px 0 50px;
-  background: url('assets/covers/patt.png');
+  background: url('../images/covers/patt.png');
 }
 
 .supporting .col {
@@ -179,7 +185,10 @@ h1, h2, a {
   font-size: 20px;
   margin-bottom: 10px;
 }
-
+.supporting .tg-widget {
+  margin: 0 auto;
+  background: transparent;
+}
 .clearfix {
   clear: both;
 }
@@ -203,7 +212,7 @@ h1, h2, a {
 /* Feature */
 .feature {
   height: 600px;
-  background: url('assets/covers/bike.jpg') no-repeat center center;
+  background: url('../images/covers/bike.jpg') no-repeat center center;
   background-size: cover;
 }
 

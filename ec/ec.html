@@ -1,61 +1,64 @@
 <!doctype html>
 <html>
-  <head><script type="text/javascript">
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	<head><script type="text/javascript">
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-      ga('create', 'UA-96750036-1', 'auto');
-      ga('send', 'pageview');
-    </script>
-    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://s3.amazonaws.com/codecademy-content/projects/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
-  </head>
-  <body>
-    <div class="header">
-      <div class="container">
-        <img  class="img" src="https://electriccastle.ro/assets/img/logo.png" />
-      </div>
-    </div>
+			ga('create', 'UA-96750036-1', 'auto');
+			ga('send', 'pageview');
+		</script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>   
+		<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="https://s3.amazonaws.com/codecademy-content/projects/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script type="text/javascript" src="pass.js"></script>
+	</head>
+	<body>
+		<div class="header">
+			<div class="container">
+				<img  class="img" src="https://electriccastle.ro/assets/img/logo.png" />
+			</div>
+		</div>
 
-    <div class="main">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8">
-            <h1>Sign up for a free ticket!</h1>
-            <form role="form">
-              <div class="form-group">
-                <label>First Name</label>
-                <input type="text" class="form-control" id="first" placeholder="First">
-              <div class="form-group">
-                <label>Last Name</label>
-                <input type="text" class="form-control" id="last" placeholder="Last">
-              </div>
-              <div class="form-group">
-                <label>Email address</label>
-                <input type="email" class="form-control" id="email" placeholder="Email">
-              </div>
-              <div class="form-group">
-                <label>Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Password">
-              </div>
-            </form>
-            <a href="#" class="btn">Free ticket!</a>
-          </div>
-        </div>
-      </div>
-    </div>
+		<div class="main">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8" id="sign-up">
+						<h1>Sign up for a free ticket!</h1>
+						<form role="form" method="get" action="https://www.google.com">
+							<div class="form-group">
+								<label for="name">Name</label>
+								<input type="text" class="form-control" id="name" name="name" placeholder="Full Name">
+							</div>
+							<div class="form-group">
+								<label for="email">Email</label>
+								<input type="email" name="email" class="form-control" id="email" placeholder="Email">
+							</div>
+							<div class="form-group">
+								<label for="password">Password</label>
+								<input type="password" name="password" class="form-control" id="password" placeholder="Password">
+							</div>
+							<div class="form-group">
+								<label for="confirm">Confirm</label>
+								<input type="password" name="confirm" class="form-control" id="confirm" placeholder="Last">
+							</div>
+						</form>
+						<button type="submit" name="submit" id="submit" class="btn">Free ticket!</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
-    <div class="footer">
-      <div class="container">
-        <div class="col-md-4">
-          <p>
-            	&copy;Iamandi Radu 2018</br><a href="http://www.fb.com/raducbu">Contact</a>
-          </p>
-        </div>
-      </div>
-    </div>
-  </body>
+		<div class="footer">
+			<div class="container">
+				<div class="col-md-4">
+					<p>
+							&copy;Iamandi Radu 2018</br><a href="http://www.fb.com/raducbu">Contact</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>

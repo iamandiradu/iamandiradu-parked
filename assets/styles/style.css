@@ -161,9 +161,9 @@ h1, h2, a {
   background: transparent;
 }
 .supporting #tg-widget .tg-form .has-warning {
-  border: 1px solid border-color: #2DCC70;
+  border: 1px solid #2DCC70;
 }
-.supporting #tg-widget .tg-form .has-warning .warning {
+.supporting #tg-widget .tg-form  .warning {
   background: #2DCC70;
 }
 

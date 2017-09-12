@@ -161,8 +161,10 @@ h1, h2, a {
   background: transparent;
 }
 .supporting #tg-widget .tg-form .has-warning {
-  background-color: #2DCC70;
-  border: 1px solid border-color: #2DCC70;;
+  border: 1px solid border-color: #2DCC70;
+}
+.supporting #tg-widget .tg-form .has-warning .warning {
+  background: #2DCC70;
 }
 
 #bike {

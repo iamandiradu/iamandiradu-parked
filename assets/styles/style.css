@@ -160,7 +160,7 @@ h1, h2, a {
   float: left;
   background: transparent;
 }
-.supporting #tg-widget .tg-form .has-warning {
+.supporting #tg-widget .tg-form.has-warning {
   border: 1px solid #2DCC70;
 }
 .supporting #tg-widget .tg-form  .warning {

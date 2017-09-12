@@ -166,10 +166,10 @@ h1, h2, a {
 .supporting #tg-widget .tg-form .warning {
   background: #2DCC70;
 }
-.pika-single.checkin-calendar-theme {
+html .pika-single.checkin-calendar-theme {
   margin-left: 144px !important;
 }
-.pika-single {
+html .pika-single {
   margin-left: 5px !important;
 }
 

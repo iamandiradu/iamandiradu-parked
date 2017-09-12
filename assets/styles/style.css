@@ -160,6 +160,9 @@ h1, h2, a {
   float: left;
   background: transparent;
 }
+.supporting #tg-widget .warning {
+  background-color: #2DCC70;
+}
 #bike {
   background-color: white;
   width: 150px;

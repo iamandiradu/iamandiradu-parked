@@ -160,7 +160,7 @@ h1, h2, a {
   float: left;
   background: transparent;
 }
-.supporting #tg-widget .warning {
+.supporting #tg-widget .tg-row.has-warning {
   background-color: #2DCC70;
 }
 #bike {

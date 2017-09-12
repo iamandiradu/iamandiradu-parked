@@ -162,6 +162,7 @@ h1, h2, a {
 }
 .supporting #tg-widget .tg-row.has-warning {
   background-color: #2DCC70;
+  border-color: #2DCC70;
 }
 #bike {
   background-color: white;

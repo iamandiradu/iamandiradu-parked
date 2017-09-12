@@ -10,7 +10,6 @@ h1, h2, a {
 .container {
   width: 940px;
   margin: 0 auto;
-
 }
 /*Header*/
 .header {
@@ -153,8 +152,13 @@ h1, h2, a {
 
 .supporting .col {
   float: left;
-  width: 28%;
+  width: 17%;
   padding: 10px;
+  margin-top: 80px;
+}
+.supporting #tg-widget {
+  float: left;
+  background: transparent;
 }
 #bike {
   background-color: white;
@@ -184,10 +188,6 @@ h1, h2, a {
   color: white;
   font-size: 20px;
   margin-bottom: 10px;
-}
-.supporting .tg-widget {
-  margin: 0 auto;
-  background: transparent;
 }
 .clearfix {
   clear: both;
@@ -256,7 +256,7 @@ h1, h2, a {
   }
 
   .supporting .col {
-    width: 30%;
+    /*width: 30%;*/
   }
 
   .supporting h2 {

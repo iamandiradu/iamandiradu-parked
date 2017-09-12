@@ -163,8 +163,14 @@ h1, h2, a {
 .supporting #tg-widget .tg-form.has-warning {
   border: 1px solid #2DCC70;
 }
-.supporting #tg-widget .tg-form  .warning {
+.supporting #tg-widget .tg-form .warning {
   background: #2DCC70;
+}
+.supporting .pika-single.checkin-calendar-theme {
+  margin-left: 144px !important;
+}
+.supporting .pika-single {
+  margin-left: 5px !important;
 }
 
 #bike {

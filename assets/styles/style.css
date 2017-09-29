@@ -92,6 +92,12 @@ h1, h2, a {
 #beer:hover {
     background: url('../images/social/zoomed/beer34.png') no-repeat;
 }
+#ardushop {
+    background: url('../images/social/ardushop.png') no-repeat;
+}
+#ardushop:hover {
+    background: url('../images/social/zoomed/ardushop34.png') no-repeat;
+}
 
 /* Main */
 
@@ -167,7 +173,10 @@ h1, h2, a {
   background: #2DCC70;
 }
 .iamradu .pika-single.checkin-calendar-theme {
-  margin-left: 144px !important;
+  margin-left: 139px !important;
+}
+.iamradu .pika-single.checkout-calendar-theme {
+  margin-left: 7px !important;
 }
 .iamradu .pika-single {
   margin-left: 5px !important;

@@ -166,6 +166,9 @@ h1, h2, a {
 .supporting #tg-widget .tg-form .warning {
   background: #2DCC70;
 }
+.supporting #tg-widget .tg-form .tg-checkout-faux {
+  margin-right: 0px;
+}
 .iamradu .pika-single.checkin-calendar-theme {
   margin-left: 144px !important;
 }

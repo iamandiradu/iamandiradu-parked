@@ -1,0 +1,137 @@
+#overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: rgba(102, 102, 102, 0.85);
+	display: none;
+
+}
+#overlay-attachment {
+	margin: 0 auto;
+	/*height: 480px;*/
+	width: 625px;
+	background: #444;
+	display: block;
+	box-shadow:  0 0 5px 5px #444;
+	-moz-box-shadow: 0 0 5px 5px #444;
+	-webkit-box-shadow: 0 0 5px 5px #444;
+	-o-box-shadow: 0 0 5px 5px #444;
+	border: 2px solid #444;
+	border-radius: 35px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+#overlay-btn {
+	background: #ccc;
+	border: 2px solid black;
+	border-radius: 5px;
+	height: 20px;
+	width: 20px;
+	display: block;
+	cursor: pointer;
+}
+#overlay-content {	
+	background: #fff;
+	position: relative;
+	border: 2px solid #fff;
+	border-radius: 10px;
+	margin: 24px;
+	opacity: 1;
+	padding: 0px 10px;
+	padding-bottom: 7px;
+}
+#overlay-content #overlay-ribbon,
+#overlay-content #overlay-product,
+#overlay-content #overlay-arrow {
+	position: absolute;
+}
+#overlay-content #overlay-ribbon {
+	top: -2px;
+	left: 468px;
+}
+#overlay-content #overlay-arrow {
+	top: 153px;
+	left: -55px;
+}
+#overlay-content #overlay-product {
+	height: 132px;
+	top: 345px;
+	left: 538px;
+}
+#overlay-header {
+	background: #000;
+	text-align: center;
+	margin-top: 10px;
+	height: 58px;
+}
+#overlay-logo {
+	margin-top: 10px;
+}
+#overlay-content-text {
+	background: #eee;
+	height: 69%;
+	padding: 20px 62px;
+	padding-bottom: 0;
+	font-family: Arial, sans-serif;
+}
+#overlay-content-text h1 {
+	font-size: 18px;
+	padding-bottom: 28px;
+	margin-top: 10px;
+	font-family: Arial, sans-serif;
+}
+#overlay-content-text p {
+	padding-bottom: 30px;
+	font-size: 13px;
+	line-height: 18px;
+	font-family: Arial, sans-serif;
+}
+#overlay-content-text #overlay-download {
+	background: #2dcc70;
+	box-shadow:  2px 2px 3px #333;
+	-moz-box-shadow:  2px 2px 3px #333;/
+	-webkit-box-shadow:  2px 2px 3px #333;
+	-o-box-shadow:  2px 2px 3px #333;
+	height: 58px;
+	width: 445px;
+	text-align: center;
+	line-height: 58px;
+	font-size: 20px;
+	color: #fff;
+	font-weight: bold;
+	border-radius: 5px;
+	margin-bottom: 18px;
+	cursor: pointer;
+	display: block;
+}
+#overlay-content-text #overlay-download img {
+	height: 35px;
+	width: 25px;
+	margin-bottom: -11px;
+	padding-right: 10px;
+}
+#overlay-content-text #overlay-no {
+	text-align: center;
+	margin-bottom: 3px;
+}
+#overlay-content-text #overlay-no-btn {
+	color: #2ddc70;
+	text-decoration: underline;
+	font-size: 12px;
+	cursor: pointer;
+}
+
+
+
+
+
+
+.overlay-no-scroll {
+	height: 100%;
+	overflow: hidden;
+}

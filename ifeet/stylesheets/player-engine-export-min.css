@@ -1280,7 +1280,8 @@ html {
 
 .device-cursor-touch,
 .device-cursor-touch * {
-    cursor: url("/images/player/touch-cursor-64.png") 32 32, default
+    /*cursor: url("/images/player/touch-cursor-64.png") 32 32, default*/
+    cursor: pointer;
 }
 
 .device-cursor-web,
@@ -1610,5 +1611,6 @@ a.waves-effect .waves-ripple {
 
 .device-cursor-touch,
 .device-cursor-touch * {
-    cursor: url("../images/player/touch-cursor-64.png") 32 32, default !important
+    /*cursor: url("../images/player/touch-cursor-64.png") 32 32, default !important*/
+    cursor: pointer;
 }

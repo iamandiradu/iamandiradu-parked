@@ -41,7 +41,9 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
+body,html {
+	background: #000;
+}
 /*HEADER*/
 .header {
 	height: 65px;

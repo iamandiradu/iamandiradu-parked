@@ -3415,7 +3415,7 @@ prx.iniBgColor = function() {
     $("#maincontent").css({
         display: "block",
         "margin-left": "0px",
-        "margin-top": "-135px"
+        "margin-top": "0px"
     }), $(".body_generic").css({
         width: "auto",
         position: "relative",

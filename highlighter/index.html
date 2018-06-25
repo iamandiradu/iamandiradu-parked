@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	<title>Text Highlighter</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+	<style type="text/css">
+		.highlight {
+			color: #2dcc70;
+			text-decoration: underline;
+			/*font-weight: bold;*/
+		}
+		#find:focus {
+			outline-color: #2dcc70;
+		}
+		#find.notFound {
+			outline-color: red;
+		}
+		#find.found {
+			outline-color: #2dcc70;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+	<h3>JS Text Highlighter</h3>
+		<label>Searching here:</label>
+		<p style="display: block; border: 1px solid #2dcc70; padding: 5px;" id="findMeInHere">Bacon ipsum dolor amet leberkas pork hamburger flank pancetta rump, turkey kielbasa short ribs pork loin chicken t-bone. Shank pork loin capicola sausage porchetta corned beef ham picanha. Capicola picanha turkey sirloin salami. Sausage venison picanha, biltong capicola jerky tri-tip kevin. Fatback pork loin boudin filet mignon leberkas meatball meatloaf. Meatloaf cupim landjaeger short ribs.</p>
+		<input type="text" name="find" placeholder="Find" id="find">
+		</div>		
+
+	</div>
+	<script type="text/javascript">
+		$(document).ready(() => {
+			let highlight = (searchFor) => {
+				if(searchFor) {
+					console.log(searchFor);
+					// if(searchFor != regexp)
+					let searchRegExp = new RegExp(searchFor, "ig"); //i - case insensitive, g - global
+					let matches = $('#findMeInHere').text().match(searchRegExp);
+					console.log(matches);
+					if(matches) {
+						$('#findMeInHere').html($('#findMeInHere').text().replace(searchRegExp, (match) => {
+							return '<span class="highlight">' + match + '</span>';
+						}));
+						$('#find').addClass('found');
+					}
+					 else {
+						$('.highlight').removeClass('highlight');
+						$('#find').addClass('notFound');
+					}
+				} else {
+					$('.highlight').removeClass('highlight');
+				}
+			}
+			$('#find').keyup(() => {
+					highlight($('#find').val());
+				});
+		});
+	</script>
+</body>
+</html>

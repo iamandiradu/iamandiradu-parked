@@ -45,14 +45,15 @@
 						$('#findMeInHere').html($('#findMeInHere').text().replace(searchRegExp, (match) => {
 							return '<span class="highlight">' + match + '</span>';
 						}));
-						$('#find').addClass('found');
+						$('#find').addClass('found').removeClass('notFound');
 					}
 					 else {
 						$('.highlight').removeClass('highlight');
-						$('#find').addClass('notFound');
+						$('#find').addClass('notFound').removeClass('found');
 					}
 				} else {
 					$('.highlight').removeClass('highlight');
+					$('#find').addClass('notFound').removeClass('found');
 				}
 			}
 			$('#find').keyup(() => {

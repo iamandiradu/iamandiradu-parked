@@ -1,23 +1,35 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<script
-  src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 	<title>Text Highlighter</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 	<style type="text/css">
+		h3 {
+			margin-top: 20px;
+		}
+
 		.highlight {
 			color: #2dcc70;
 			text-decoration: underline;
-			/*font-weight: bold;*/
 		}
+
+		#findMeInHere {
+			display: block;
+			border: 1px solid #2dcc70;
+			padding: 5px
+		}
+
 		#find:focus {
 			outline-color: #2dcc70;
 		}
+
 		#find.notFound {
-			outline-color: red;
+			outline-color: #ff0000;
 		}
+
 		#find.found {
 			outline-color: #2dcc70;
 		}
@@ -25,40 +37,44 @@
 </head>
 <body>
 	<div class="container">
-	<h3>JS Text Highlighter</h3>
+		<h3>JS Text Highlighter</h3>
 		<label>Searching here:</label>
-		<p style="display: block; border: 1px solid #2dcc70; padding: 5px;" id="findMeInHere">Bacon ipsum dolor amet leberkas pork hamburger flank pancetta rump, turkey kielbasa short ribs pork loin chicken t-bone. Shank pork loin capicola sausage porchetta corned beef ham picanha. Capicola picanha turkey sirloin salami. Sausage venison picanha, biltong capicola jerky tri-tip kevin. Fatback pork loin boudin filet mignon leberkas meatball meatloaf. Meatloaf cupim landjaeger short ribs.</p>
+		<p id="findMeInHere">Bacon ipsum dolor amet leberkas pork hamburger flank pancetta rump, turkey kielbasa short ribs pork loin chicken t-bone. Shank pork loin capicola sausage porchetta corned beef ham picanha. Capicola picanha turkey sirloin salami. Sausage venison picanha, biltong capicola jerky tri-tip kevin. Fatback pork loin boudin filet mignon leberkas meatball meatloaf. Meatloaf cupim landjaeger short ribs.</p>
 		<input type="text" name="find" placeholder="Find" id="find">
-		</div>		
+		<p class="counter"> The process took <span class="counter-time">0</span> ms.</p>
+	</div>
 
 	</div>
 	<script type="text/javascript">
-		$(document).ready(() => {
+		$(document).ready(() => { 
 			let highlight = (searchFor) => {
-				if(searchFor) {
-					console.log(searchFor);
-					// if(searchFor != regexp)
-					let searchRegExp = new RegExp(searchFor, "ig"); //i - case insensitive, g - global
-					let matches = $('#findMeInHere').text().match(searchRegExp);
+				let startTimer = performance.now(); 																	// momentul de start pentru counter
+				if (searchFor) { 																						// verifica daca exista search input
+					console.log(`RegExp searching for ${searchFor}`);
+					let searchRegExp = new RegExp(searchFor, `ig`); //i - case insensitive, g - global					// transforma search input in regexp
+					let matches = $(`#findMeInHere`).text().match(searchRegExp);										// creaza un array cu toate string-urile gasite in urma testului cu regexp-ul generat
 					console.log(matches);
-					if(matches) {
-						$('#findMeInHere').html($('#findMeInHere').text().replace(searchRegExp, (match) => {
-							return '<span class="highlight">' + match + '</span>';
+					if (matches) {																						// conditie pentru a gestiona textul
+						$(`#findMeInHere`).html($(`#findMeInHere`).text().replace(searchRegExp, (match) => {			// incapsuleaza string-ul cautat intr-un span (underline/highlight)
+							return `<span class="highlight">${match}</span>`;
 						}));
-						$('#find').addClass('found').removeClass('notFound');
-					}
-					 else {
-						$('.highlight').removeClass('highlight');
-						$('#find').addClass('notFound').removeClass('found');
+						$(`#find`).addClass(`found`).removeClass(`notFound`);											// adauga un outline verde input-ului in cazul gasirii unui match
+					} else {
+						$(`.highlight`).removeClass(`highlight`);														// sterge toate highlight-urile din text in cazul in care nu s-a putut gasi un match)
+						$(`#find`).addClass(`notFound`).removeClass(`found`);											// de asemenea, adauga un outline rosu input-ului
 					}
 				} else {
-					$('.highlight').removeClass('highlight');
-					$('#find').addClass('notFound').removeClass('found');
+					$(`.highlight`).removeClass(`highlight`);															// daca input-ul e gol, sterge toate highlight-urile
+					$(`#find`).removeClass(`found`);																	// de asemenea, sterge outline-ul input-ului
 				}
+				let endTimer = performance.now();																		// momentul de stop pentru counter
+				let processTime = parseFloat((endTimer - startTimer)).toFixed(2);										// calculeaza (rotunjit) durata procesului
+				console.log(`Real time is ${(endTimer - startTimer)}ms.`);
+				$(`.counter-time`).html(processTime);																	// adauga durata procesului in tag-ul "p" 
 			}
-			$('#find').keyup(() => {
-					highlight($('#find').val());
-				});
+			$(`#find`).keyup(() => {																					// trigger pentru functia de highlight (trigger pe event=ul de keyUp)
+				highlight($(`#find`).val());																		
+			});
 		});
 	</script>
 </body>

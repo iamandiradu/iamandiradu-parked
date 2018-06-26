@@ -3,6 +3,7 @@
 
 <head>
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	<link rel="icon" href="Assets/Images/ico.png">
 	<title>Text Highlighter</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
@@ -49,37 +50,6 @@ Nulla facilisi. Pellentesque dapibus aliquam orci sed convallis. Nulla ac congue
 	</div>
 
 	</div>
-	<script type="text/javascript">
-		$(document).ready(() => { 
-			let highlight = (searchFor) => {
-				let startTimer = performance.now(); 																	// momentul de start pentru counter
-				if (searchFor) { 																						// verifica daca exista search input
-					console.log(`RegExp searching for ${searchFor}`);
-					let searchRegExp = new RegExp(searchFor, `ig`); //i - case insensitive, g - global					// transforma search input in regexp
-					let matches = $(`#findMeInHere`).text().match(searchRegExp);										// creaza un array cu toate string-urile gasite in urma testului cu regexp-ul generat
-					console.log(matches);
-					if (matches) {																						// conditie pentru a gestiona textul
-						$(`#findMeInHere`).html($(`#findMeInHere`).text().replace(searchRegExp, (match) => {			// incapsuleaza string-ul cautat intr-un span (underline/highlight)
-							return `<span class="highlight">${match}</span>`;
-						}));
-						$(`#find`).addClass(`found`).removeClass(`notFound`);											// adauga un outline verde input-ului in cazul gasirii unui match
-					} else {
-						$(`.highlight`).removeClass(`highlight`);														// sterge toate highlight-urile din text in cazul in care nu s-a putut gasi un match)
-						$(`#find`).addClass(`notFound`).removeClass(`found`);											// de asemenea, adauga un outline rosu input-ului
-					}
-				} else {
-					$(`.highlight`).removeClass(`highlight`);															// daca input-ul e gol, sterge toate highlight-urile
-					$(`#find`).removeClass(`found`);																	// de asemenea, sterge outline-ul input-ului
-				}
-				let endTimer = performance.now();																		// momentul de stop pentru counter
-				let processTime = parseFloat((endTimer - startTimer)).toFixed(2);										// calculeaza (rotunjit) durata procesului
-				console.log(`Real time is ${(endTimer - startTimer)}ms.`);
-				$(`.counter-time`).html(processTime);																	// adauga durata procesului in tag-ul "p" 
-			}
-			$(`#find`).keyup(() => {																					// trigger pentru functia de highlight (trigger pe event=ul de keyUp)
-				highlight($(`#find`).val());																		
-			});
-		});
-	</script>
+	<script type="text/javascript" src="Assets/Scripts/highlighter.js"></script>
 </body>
 </html>

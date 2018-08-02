@@ -20,9 +20,21 @@ if(isAndroid) {
    var isAndroid2 = true;
 }
 
+$(() => {
+	
+	let showOverlay = () => {
+		$('#detect').append('<p>' + '1: ' + isSamsungBrowser + '</p>' + '<p>' + '2: ' + isSamsungBrowser2 + '</p>' + '<p>' + '3: ' + isSamsungBrowser3 + '</p>' + '<p>' + '4: ' + isSamsungBrowser4 + '</p>' + '<p>' + '5: ' + isAndroid + '</p>' + '<p>' + '6: ' + isAndroid2 + '</p>');
+	}
+	
+	setTimeout(showOverlay, 3000);
+	
+});
+
 console.log('1: ' + isSamsungBrowser);
 console.log('2: ' + isSamsungBrowser);
 console.log('3: ' + isSamsungBrowser);
 console.log('4: ' + isSamsungBrowser);
 console.log('6: ' + isAndroid);
 console.log('7: ' + isAndroid2);
+console.log('done');
+

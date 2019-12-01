@@ -1,15 +1,15 @@
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
 module.exports = {
-  entry: './src/index.js',
+  entry: "./src/index.js",
   output: {
-    filename: 'bundle.js'
+    filename: "bundle.js"
   },
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: ["style-loader", "css-loader"]
       },
       {
         test: /\.(js|jsx)$/,
@@ -18,22 +18,20 @@ module.exports = {
           loader: "babel-loader",
           options: {
             presets: [
-              '@babel/preset-env',
+              "@babel/preset-env",
               {
-                plugins: [
-                  '@babel/plugin-proposal-class-properties'
-                ]
+                plugins: ["@babel/plugin-proposal-class-properties"]
               }
             ]
-          },
+          }
         }
       }
-    ],
+    ]
   },
   optimization: {
-    minimizer: [new UglifyJsPlugin()],
+    minimizer: [new UglifyJsPlugin()]
   },
   node: {
-    fs: 'empty'
+    fs: "empty"
   }
 };

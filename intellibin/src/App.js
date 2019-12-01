@@ -40,7 +40,7 @@ export default class App {
       .initiateWebcam()
       .then(() => {
         this.guessButton.classList.remove("blinking");
-        this.guessButton.innerText = "Este reciclabil?";
+        this.guessButton.innerText = "Apasa aici pentru detectie";
         this.guessButton.onclick = () => {
           this.predict();
         };

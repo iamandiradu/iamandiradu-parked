@@ -38,11 +38,40 @@ export default class App {
 		if (!event.repeat) {
 			switch (event.key) {
 				case '0':
-					console.log('NO');
+					if (
+						window.getComputedStyle(document.getElementsByClassName('intro')[0])
+							.display !== 'none'
+					) {
+						document.getElementsByClassName('start-button')[0].click();
+						console.log('START BUTTON');
+					} else if (
+						window.getComputedStyle(document.getElementById('guess-button')).display !==
+						'none'
+					) {
+						document.getElementById('guess-button').click();
+						console.log('GUESS BUTTON');
+					} else if (
+						window.getComputedStyle(document.getElementById('next')).display !== 'none'
+					) {
+						document.getElementById('next').click();
+						console.log('RETRY/NEXT BUTTON');
+					} else {
+						console.log('YES');
+						document.getElementById('yes').click();
+					}
 					break;
 				case '1':
-					console.log('YES');
-					break;
+					if (
+						window.getComputedStyle(document.getElementsByClassName('intro')[0])
+							.display === 'none' ||
+						window.getComputedStyle(document.getElementById('guess-button')).display ===
+							'none' ||
+						window.getComputedStyle(document.getElementById('next')).display === 'none'
+					) {
+						console.log('NO');
+						document.getElementById('no').click();
+						break;
+					}
 				default:
 					console.log("A button pressed - dunno which, don't care");
 			}
@@ -52,7 +81,7 @@ export default class App {
 	init = () => {
 		this.recognitionFeature.loadModel().then(() => {
 			this.startButton.classList.remove('blinking');
-			this.startButton.innerText = 'Start';
+			this.startButton.innerText = 'Apasa butonul ALB pentru a incepe';
 			this.startButton.onclick = () => this.start();
 		});
 	};
@@ -65,7 +94,7 @@ export default class App {
 			.initiateWebcam()
 			.then(() => {
 				this.guessButton.classList.remove('blinking');
-				this.guessButton.innerText = 'Apasa aici pentru detectie';
+				this.guessButton.innerText = 'Apasa butonul ALB pentru a detecta obiectul';
 				this.guessButton.onclick = () => {
 					this.predict();
 				};
@@ -82,12 +111,32 @@ export default class App {
 				let predictedObject = predictionsResult[0].class.split(',')[0];
 				/* Filter out human factor if other object is detected */
 				if (
+					(predictionsResult.length == 1 &&
+						predictionsResult[0].class.split(',')[0] === 'person') ||
+					predictionsResult.length == 1
+				) {
+					hideElement([
+						this.classificationDiv,
+						this.doneButton,
+						this.resultDiv,
+						this.confirmationButtons,
+					]);
+					console.log('Hide classification, done and result');
+					showElement(this.guessButton);
+					this.guessButton.innerText =
+						'Nu am putut detecta un obiect. Apasa buton ALB pentru a reincerca';
+					this.guessButton.onclick = () => {
+						this.predict();
+					};
+					return;
+				} else if (
 					predictionsResult.length > 1 &&
 					predictionsResult[0].class.split(',')[0] === 'person'
 				) {
 					predictedObject = predictionsResult[1].class.split(',')[0];
 				}
 				/* End of human filter */
+				/* Should translate the predicted object sentence */
 				this.resultDiv.innerText = '';
 				this.resultDiv.innerHTML = `Is it a ${predictedObject}?`;
 				hideElement([this.classificationDiv, this.guessButton]);
@@ -135,28 +184,28 @@ export default class App {
 
 		switch (color) {
 			case 'yellow':
-				content = `Este reciclabil! Arunca-l in recipientul galben! 🎉`;
+				content = `Este reciclabil! Arunca obiectul in recipientul galben! 🎉`;
 				this.showFinalMessage(content);
 				break;
 			case 'green':
-				content = `Este reciclabil! Arunca-l in recipientul verde! 🎉`;
+				content = `Este reciclabil! Arunca obiectul in recipientul verde! 🎉`;
 				this.showFinalMessage(content);
 				break;
 			case 'blue':
-				content = `Este reciclabil! Arunca-l in recipientul albastru! 🎉`;
+				content = `Este reciclabil! Arunca obiectul in recipientul albastru! 🎉`;
 				this.showFinalMessage(content);
 				break;
 			case 'cyan':
-				content = `RoRec message here or smtg.`;
+				content = `Fiind un dispozitiv electronic, acesta predat organizatiilor respunzatoare (ex: RoRec).`;
 				this.showFinalMessage(content);
 				break;
 			case 'black':
-				content = `Nu este reciclabil! 😢Arunca-l in tomberonul negru.`;
+				content = `Nu este reciclabil! Arunca obiectul in recipientul negru. 😢`;
 				this.showFinalMessage(content);
 				break;
 			case 'none':
 				content = `Obiectul nu a putut fi recunoscut...\n
-        Este facut din plastic, aluminium, hartie sau sticla?`;
+        Este din plastic, aluminium, hartie sau sticla?`;
 				this.displayLastButtons();
 				break;
 			default:
@@ -173,8 +222,10 @@ export default class App {
 		const noButton = document.getElementById('no');
 
 		yesButton.onclick = () =>
-			this.showFinalMessage('Probabil il poti arunca in recipientul galben! 🎉');
-		noButton.onclick = () => this.showFinalMessage('Hmm, arunca-l in recipientul negru.');
+			this.showFinalMessage(
+				'Il poti arunca, dupa caz, intr-unul din recipientele de culoare verde, albastra sau galbena! 🎉'
+			);
+		noButton.onclick = () => this.showFinalMessage('Arunca obiectul in recipientul negru. 😢');
 	};
 
 	showFinalMessage = content => {

@@ -8,7 +8,6 @@ import { cyanBinItems } from './data/cyanBinList';
 import { blackBinItems } from './data/blackBinList';
 
 import './App.css';
-import { checkWebGLError } from '@tensorflow/tfjs-core/dist/kernels/webgl/webgl_util';
 
 export default class App {
 	constructor() {
@@ -101,47 +100,39 @@ export default class App {
 			})
 			.catch(() => {
 				hideElement(this.guessButton);
-				this.resultDiv.innerHTML = `Camera indisponibila. Acest demo are nevoie de o camera accesibila.`;
+				this.resultDiv.innerHTML = `Camera indisponibila.\nAcest demo are nevoie de o camera accesibila.`;
 			});
 	}
 
 	predict = () => {
 		this.recognitionFeature.runPredictions().then(predictionsResult => {
 			if (predictionsResult.length) {
-				let predictedObject = predictionsResult[0].class.split(',')[0];
-				/* Filter out human factor if other object is detected */
-				if (
-					(predictionsResult.length == 1 &&
-						predictionsResult[0].class.split(',')[0] === 'person') ||
-					predictionsResult.length == 1
-				) {
-					hideElement([
-						this.classificationDiv,
-						this.doneButton,
-						this.resultDiv,
-						this.confirmationButtons,
-					]);
-					console.log('Hide classification, done and result');
-					showElement(this.guessButton);
-					this.guessButton.innerText =
-						'Nu am putut detecta un obiect. Apasa buton DA pentru a reincerca';
-					this.guessButton.onclick = () => {
-						this.predict();
-					};
-					return;
-				} else if (
-					predictionsResult.length > 1 &&
-					predictionsResult[0].class.split(',')[0] === 'person'
-				) {
-					predictedObject = predictionsResult[1].class.split(',')[0];
-				}
-				/* End of human filter */
-				/* Should translate the predicted object sentence */
-				this.resultDiv.innerText = '';
-				this.resultDiv.innerHTML = `Is it a ${predictedObject}?`;
-				hideElement([this.classificationDiv, this.guessButton]);
+				/* Human filter */
+				predictionsResult.forEach(result => {
+					const predictedObject = result.class.split(',')[0];
+					if (predictedObject === 'person') {
+						console.log('Human factor filtered ');
+						hideElement([
+							this.classificationDiv,
+							this.doneButton,
+							this.resultDiv,
+							this.confirmationButtons,
+						]);
+						showElement(this.guessButton);
+						this.guessButton.innerText =
+							'Nu am putut detecta un obiect\nApasa buton DA pentru a reincerca';
+						this.guessButton.onclick = () => {
+							this.predict();
+						};
+						return;
+					} else {
+						this.resultDiv.innerText = '';
+						this.resultDiv.innerHTML = `Is it a ${predictedObject}?`;
+						hideElement([this.classificationDiv, this.guessButton]);
 
-				this.classifyItem(predictionsResult[0].class.split(',')[0]);
+						this.classifyItem(predictedObject);
+					}
+				});
 			}
 		});
 	};
@@ -196,7 +187,7 @@ export default class App {
 				this.showFinalMessage(content);
 				break;
 			case 'cyan':
-				content = `Fiind un dispozitiv electronic, acesta predat organizatiilor respunzatoare (ex: RoRec).`;
+				content = `Fiind un dispozitiv electronic, acesta trebuie predat organizatiilor respunzatoare (ex: RoRec).`;
 				this.showFinalMessage(content);
 				break;
 			case 'black':
@@ -223,7 +214,7 @@ export default class App {
 
 		yesButton.onclick = () =>
 			this.showFinalMessage(
-				'Il poti arunca, dupa caz, intr-unul din recipientele de culoare verde, albastra sau galbena! 🎉'
+				'Il poti arunca, dupa caz, intr-unul din recipientele aferente! 🎉'
 			);
 		noButton.onclick = () => this.showFinalMessage('Arunca obiectul in recipientul negru. 😢');
 	};

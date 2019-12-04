@@ -191,11 +191,11 @@ export default class App {
 				this.showFinalMessage(content);
 				break;
 			case 'black':
-				content = `Nu este reciclabil! Arunca obiectul in recipientul negru. 😢`;
+				content = `Nu este reciclabil, dar este biodegradabil. Arunca obiectul in recipientul maro! 🎉`;
 				this.showFinalMessage(content);
 				break;
 			case 'none':
-				content = `Obiectul nu a putut fi recunoscut...\n
+				content = `Obiectul nu a putut fi incadrat intr-o categorie.\n
         Este din plastic, aluminium, hartie sau sticla?`;
 				this.displayLastButtons();
 				break;

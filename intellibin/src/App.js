@@ -81,7 +81,7 @@ export default class App {
 	init = () => {
 		this.recognitionFeature.loadModel().then(() => {
 			this.startButton.classList.remove('blinking');
-			this.startButton.innerText = 'Apasa butonul ALB pentru a incepe';
+			this.startButton.innerText = 'Apasa butonul DA pentru a incepe';
 			this.startButton.onclick = () => this.start();
 		});
 	};
@@ -94,7 +94,7 @@ export default class App {
 			.initiateWebcam()
 			.then(() => {
 				this.guessButton.classList.remove('blinking');
-				this.guessButton.innerText = 'Apasa butonul ALB pentru a detecta obiectul';
+				this.guessButton.innerText = 'Apasa butonul DA pentru a detecta obiectul';
 				this.guessButton.onclick = () => {
 					this.predict();
 				};
@@ -124,7 +124,7 @@ export default class App {
 					console.log('Hide classification, done and result');
 					showElement(this.guessButton);
 					this.guessButton.innerText =
-						'Nu am putut detecta un obiect. Apasa buton ALB pentru a reincerca';
+						'Nu am putut detecta un obiect. Apasa buton DA pentru a reincerca';
 					this.guessButton.onclick = () => {
 						this.predict();
 					};

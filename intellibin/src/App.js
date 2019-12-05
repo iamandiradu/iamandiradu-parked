@@ -143,7 +143,9 @@ export default class App {
 						return;
 					} else {
 						this.resultDiv.innerText = '';
-						this.resultDiv.innerHTML = `Is it a ${translateText(predictedObject)}?`;
+						this.resultDiv.innerHTML = `Is it a ${this.translateText(
+							predictedObject
+						)}?`;
 						hideElement([this.classificationDiv, this.guessButton]);
 
 						this.classifyItem(predictedObject);

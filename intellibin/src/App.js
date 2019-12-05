@@ -1,4 +1,5 @@
 import ImageRecognition from './ImageRecognition.js';
+import translate from 'translate'; // New wave
 import { hideElement, showElement } from './utils/utils.js';
 import find from 'lodash/find';
 import { yellowBinItems } from './data/yellowBinList';
@@ -9,9 +10,8 @@ import { blackBinItems } from './data/blackBinList';
 
 import './App.css';
 
-const { Translate } = require('@google-cloud/translate').v2;
-
-const translate = new Translate();
+translate.engine = 'google';
+translate.key = 'AIzaSyDXSsvQYM4ue0uFpwIcUf7X4awOM_a9K5w';
 
 export default class App {
 	constructor() {
@@ -31,18 +31,6 @@ export default class App {
 			this.onkeydown = this.keyHandler;
 		});
 	}
-	/* Translator */
-	translateText = async input => {
-		// Translates the text into the target language. "text" can be a string for
-		// translating a single piece of text, or an array of strings for translating
-		// multiple texts.
-		let [translations] = await translate.translate(input, 'ro');
-		translations = Array.isArray(translations) ? translations : [translations];
-		console.log('Translations:');
-		translations.forEach((translation, i) => {
-			console.log(`${input[i]} => ${translation}`);
-		});
-	};
 
 	/* Physica buttons handler */
 	keyHandler = event => {
@@ -96,7 +84,7 @@ export default class App {
 	init = () => {
 		this.recognitionFeature.loadModel().then(() => {
 			this.startButton.classList.remove('blinking');
-			this.startButton.innerText = 'Apasa DA pentru a incepe';
+			this.startButton.innerText = 'Apasă DA pentru a începe';
 			this.startButton.onclick = () => this.start();
 		});
 	};
@@ -109,18 +97,18 @@ export default class App {
 			.initiateWebcam()
 			.then(() => {
 				this.guessButton.classList.remove('blinking');
-				this.guessButton.innerText = 'Apasa DA pentru a detecta obiectul';
+				this.guessButton.innerText = 'Apasă DA pentru a detecta obiectul';
 				this.guessButton.onclick = () => {
 					this.predict();
 				};
 			})
 			.catch(() => {
 				hideElement(this.guessButton);
-				this.resultDiv.innerHTML = `Camera indisponibila.\nAcest demo are nevoie de o camera accesibila.`;
+				this.resultDiv.innerHTML = `Camera indisponibilă.\nAcest demo are nevoie de acces la cameră.`;
 			});
 	}
 
-	predict = () => {
+	predict = async () => {
 		this.recognitionFeature.runPredictions().then(predictionsResult => {
 			if (predictionsResult.length) {
 				/* Human filter */
@@ -136,19 +124,29 @@ export default class App {
 						]);
 						showElement(this.guessButton);
 						this.guessButton.innerText =
-							'Nu am putut detecta un obiect\nApasa DA pentru a reincerca';
+							'Nu am putut detecta un obiect\nApasă DA pentru a reîncerca.';
 						this.guessButton.onclick = () => {
 							this.predict();
 						};
 						return;
 					} else {
-						this.resultDiv.innerText = '';
-						this.resultDiv.innerHTML = `Is it a ${this.translateText(
-							predictedObject
-						)}?`;
-						hideElement([this.classificationDiv, this.guessButton]);
+						const predictedObjectTranslated = async predictedObject => {
+							if (predictedObject === 'cell phone') {
+								predictedObject = 'mobile phone';
+							}
 
-						this.classifyItem(predictedObject);
+							const translation = await translate(
+								`Is it a ${predictedObject.toUpperCase()}?`,
+								'ro'
+							);
+
+							hideElement([this.classificationDiv, this.guessButton]);
+							this.resultDiv.innerText = '';
+							this.resultDiv.innerText = translation;
+							this.classifyItem(predictedObject);
+						};
+
+						predictedObjectTranslated(predictedObject);
 					}
 				});
 			}
@@ -193,28 +191,27 @@ export default class App {
 
 		switch (color) {
 			case 'yellow':
-				content = `Este reciclabil! Arunca obiectul in recipientul galben! 🎉`;
+				content = `Este reciclabil! Aruncă obiectul în recipientul galben! 🎉`;
 				this.showFinalMessage(content);
 				break;
 			case 'green':
-				content = `Este reciclabil! Arunca obiectul in recipientul verde! 🎉`;
+				content = `Este reciclabil! Aruncă obiectul în recipientul verde! 🎉`;
 				this.showFinalMessage(content);
 				break;
 			case 'blue':
-				content = `Este reciclabil! Arunca obiectul in recipientul albastru! 🎉`;
+				content = `Este reciclabil! Aruncă obiectul în recipientul albastru! 🎉`;
 				this.showFinalMessage(content);
 				break;
 			case 'cyan':
-				content = `Fiind un dispozitiv electronic, acesta trebuie predat organizatiilor respunzatoare (ex: RoRec).`;
+				content = `Fiind un dispozitiv electronic, acesta trebuie predat organizațiilor corespunzatoare (ex: RoRec).`;
 				this.showFinalMessage(content);
 				break;
 			case 'black':
-				content = `Nu este reciclabil, dar este biodegradabil. Arunca obiectul in recipientul maro! 🎉`;
+				content = `Nu este reciclabil, dar este biodegradabil. Aruncă obiectul în recipientul maro! 🎉`;
 				this.showFinalMessage(content);
 				break;
 			case 'none':
-				content = `Obiectul nu a putut fi incadrat intr-o categorie.\n
-        Este din plastic, aluminium, hartie sau sticla?`;
+				content = `Obiectul nu a putut fi încadrat într-o categorie.\nEste din plastic, aluminium, hârtie sau sticlă?`;
 				this.displayLastButtons();
 				break;
 			default:
@@ -232,9 +229,9 @@ export default class App {
 
 		yesButton.onclick = () =>
 			this.showFinalMessage(
-				'Il poti arunca, dupa caz, intr-unul din recipientele aferente! 🎉'
+				'Îl poți arunca, după caz, într-unul din recipientele aferente! 🎉'
 			);
-		noButton.onclick = () => this.showFinalMessage('Arunca obiectul in recipientul negru. 😢');
+		noButton.onclick = () => this.showFinalMessage('Aruncă obiectul în recipientul negru. 😢');
 	};
 
 	showFinalMessage = content => {

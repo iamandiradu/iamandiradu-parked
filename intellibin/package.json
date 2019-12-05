@@ -23,7 +23,8 @@
 		"babel-polyfill": "^6.26.0",
 		"json-loader": "^0.5.7",
 		"lodash": "^4.17.11",
-		"style-loader": "^0.23.1"
+		"style-loader": "^0.23.1",
+		"translate": "^1.1.0"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.3.4",

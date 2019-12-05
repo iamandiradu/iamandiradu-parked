@@ -9,6 +9,10 @@ import { blackBinItems } from './data/blackBinList';
 
 import './App.css';
 
+const { Translate } = require('@google-cloud/translate').v2;
+
+const translate = new Translate();
+
 export default class App {
 	constructor() {
 		this.confirmationButtons = document.getElementById('confirmation-buttons');
@@ -27,6 +31,18 @@ export default class App {
 			this.onkeydown = this.keyHandler;
 		});
 	}
+	/* Translator */
+	translateText = async input => {
+		// Translates the text into the target language. "text" can be a string for
+		// translating a single piece of text, or an array of strings for translating
+		// multiple texts.
+		let [translations] = await translate.translate(input, 'ro');
+		translations = Array.isArray(translations) ? translations : [translations];
+		console.log('Translations:');
+		translations.forEach((translation, i) => {
+			console.log(`${input[i]} => ${translation}`);
+		});
+	};
 
 	/* Physica buttons handler */
 	keyHandler = event => {
@@ -127,7 +143,7 @@ export default class App {
 						return;
 					} else {
 						this.resultDiv.innerText = '';
-						this.resultDiv.innerHTML = `Is it a ${predictedObject}?`;
+						this.resultDiv.innerHTML = `Is it a ${translateText(predictedObject)}?`;
 						hideElement([this.classificationDiv, this.guessButton]);
 
 						this.classifyItem(predictedObject);

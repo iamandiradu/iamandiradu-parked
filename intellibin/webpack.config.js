@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+=======
+// const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+>>>>>>> fix translator
 
 module.exports = {
 	entry: './src/index.js',
@@ -29,9 +34,10 @@ module.exports = {
 		],
 	},
 	optimization: {
-		minimizer: [new UglifyJsPlugin()],
+		minimizer: [new TerserPlugin()],
 	},
 	node: {
+		console: true,
 		fs: 'empty',
 		net: 'empty',
 		tls: 'empty',

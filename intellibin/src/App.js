@@ -144,7 +144,7 @@ export default class App {
 								predictedObject = 'plastic bottle';
 							}
 							const translation = await translate(
-								`Is it a ${predictedObject.toUpperCase()}?`,
+								`Is it a ${predictedObject}?`,
 								'ro'
 							);
 

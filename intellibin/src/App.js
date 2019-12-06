@@ -134,7 +134,15 @@ export default class App {
 							if (predictedObject === 'cell phone') {
 								predictedObject = 'mobile phone';
 							}
-
+							if (
+								predictedObject === 'bottle' ||
+								predictedObject === 'bottle' ||
+								predictedObject === 'beer bottle' ||
+								predictedObject === 'jar' ||
+								predictedObject === 'beer glass'
+							) {
+								predictedObject = 'plastic bottle';
+							}
 							const translation = await translate(
 								`Is it a ${predictedObject.toUpperCase()}?`,
 								'ro'

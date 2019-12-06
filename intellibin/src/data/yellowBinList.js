@@ -9,4 +9,5 @@ export const yellowBinItems = [
 	'plastic bag',
 	'screw',
 	'screwdriver',
+	'plastic bottle',
 ];

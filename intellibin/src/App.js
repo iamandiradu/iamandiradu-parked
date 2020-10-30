@@ -143,10 +143,11 @@ export default class App {
 							) {
 								predictedObject = 'plastic bottle';
 							}
-							const translation = await translate(
-								`Is it a ${predictedObject}?`,
-								'ro'
-							);
+							// const translation = await translate(
+							// 	`Is it a ${predictedObject}?`,
+							// 	'ro'
+							// );
+							const translation = `Is it a ${predictedObject}?`;
 
 							hideElement([this.classificationDiv, this.guessButton]);
 							this.resultDiv.innerText = '';
